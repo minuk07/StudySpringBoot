@@ -8,8 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
+//Test -> Cmd+Shift+T
+    private final MemberRepository memberRepository;
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //MemberService 입장에서 직접 객체를 생성하지 않고 외부에서 MemoryMemberRepository를 외부에서 넣어줌 ==> DI(Dependency Injection)
+    public MemberService(MemberRepository memberRepository) { //MemberRepository를 직접 new로 생성하지 않고 외부에서 넣어줌.
+        this.memberRepository = memberRepository;
+    }
 
     //회원 가입
     public Long join(Member member){
